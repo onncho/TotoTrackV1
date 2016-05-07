@@ -1,4 +1,4 @@
-var app = angular.module('totoTrackingApp', ['ionic']);
+var app = angular.module('totoTrackingApp', ['ionic', 'backand']);
 
 app.run(function($ionicPlatform, $rootScope, $timeout, $state) {
   $ionicPlatform.ready(function() {
@@ -33,15 +33,13 @@ app.run(function($ionicPlatform, $rootScope, $timeout, $state) {
   });
 })
 
-    .config(function (BackandProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
-      BackandProvider.setAppName('teaas');
-      BackandProvider.setSignUpToken('4aeebc12-5567-4df5-8494-5762e66d109e');
-      BackandProvider.setAnonymousToken('e718566d-aa77-4b3d-acc3-997088239968');
-    })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, BackandProvider) {
+    BackandProvider.setAppName('teaas');
+    BackandProvider.setSignUpToken('4aeebc12-5567-4df5-8494-5762e66d109e');
+    BackandProvider.setAnonymousToken('e718566d-aa77-4b3d-acc3-997088239968');
+
   $stateProvider
-
   .state('app', {
     url: '/app',
     abstract: true,

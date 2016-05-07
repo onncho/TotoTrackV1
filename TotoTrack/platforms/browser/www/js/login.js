@@ -1,4 +1,4 @@
-app.factory('loginSrv', ["$http", function($http) {
+app.factory('loginSrv', ["$http",'Backand', function($http, Backand) {
     var service = {};
 
     service.login = function(cerdentials) {
@@ -8,7 +8,7 @@ app.factory('loginSrv', ["$http", function($http) {
     service.loginBackand = function(cerdentials) {
         return $http ({
             method: 'GET',
-            url: appConfig.backand + '/1/query/data/intersectUsernamePassword',
+            url: Backand.getApiUrl() + '/1/query/data/intersectUsernamePassword',
             params: {
                 parameters: {
                     usernameInput: cerdentials.username,
@@ -26,7 +26,8 @@ app.factory('loginSrv', ["$http", function($http) {
 
         $scope.login = function(data) {
             debugger;
-            loginSrv.login(data).then(function(response) {
+            loginSrv.loginBackand(data).then(function(response) {
+                debugger;
                 if(response.data == "success") {
                     debugger;
                     model.isSuccess = true;
