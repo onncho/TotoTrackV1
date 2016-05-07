@@ -83,7 +83,8 @@ app.run(function($ionicPlatform, $rootScope, $timeout, $state) {
     url: '/signup',
     views: {
       'menuContent': {
-        templateUrl: 'templates/signup.html'
+        templateUrl: 'templates/signup.html',
+        controller : 'signUpCtrl'
       }
     }
   })
