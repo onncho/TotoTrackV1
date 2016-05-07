@@ -33,6 +33,12 @@ app.run(function($ionicPlatform, $rootScope, $timeout, $state) {
   });
 })
 
+    .config(function (BackandProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
+      BackandProvider.setAppName('teaas');
+      BackandProvider.setSignUpToken('4aeebc12-5567-4df5-8494-5762e66d109e');
+      BackandProvider.setAnonymousToken('e718566d-aa77-4b3d-acc3-997088239968');
+    })
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
