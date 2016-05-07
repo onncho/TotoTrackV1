@@ -5,7 +5,7 @@ app.factory('signUpSrv', ["$http", function($http) {
             return $http.get(appConfig.webServerUrl + "/authentication", {params: {username: cerdentials.username, password: cerdentials.password}});
         }
 
-        service.loginBackand = function(cerdentials) {
+        service.signUpBackand = function(cerdentials) {
             return $http ({
                 method: 'GET',
                 url: appConfig.backand + '/1/query/data/intersectUsernamePassword',
@@ -24,21 +24,12 @@ app.factory('signUpSrv', ["$http", function($http) {
     .controller('signUpCtrl',['$scope','$state','signUpSrv', function ($scope, $state, signUpSrv) {
         var model = {};
         
-        $scope.signUp = function () { 
-            
-        }
-        
-        
-        
-
-        $scope.login = function(data) {
-            debugger;
-            loginSrv.login(data).then(function(response) {
+        $scope.signUp = function (data) {
+            signUpSrv.signUpBackand(data).then(function (response) {
                 if(response.data == "success") {
-                    debugger;
                     model.isSuccess = true;
                     $state.go('app.dashboard');
-                }else {
+                } else {
                     model.isSuccess = false;
                 }
             })
