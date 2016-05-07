@@ -1,4 +1,4 @@
-var app = angular.module('totoTrackingApp', ['ionic', 'backand']);
+var app = angular.module('totoTrackingApp', ['ionic', 'backand', 'angular-svg-round-progressbar']);
 
 app.run(function($ionicPlatform, $rootScope, $timeout, $state) {
   $ionicPlatform.ready(function() {
